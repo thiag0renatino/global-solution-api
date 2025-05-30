@@ -1,9 +1,6 @@
 package com.fiap.global_solution_api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,8 +11,10 @@ public class Localizacao {
     @Id
     private Long idLocalizacao;
 
+    @Column(precision = 10, scale = 6)
     private BigDecimal latitude;
 
+    @Column(precision = 10, scale = 6)
     private BigDecimal longitude;
 
     private LocalDate dataCaptura;
