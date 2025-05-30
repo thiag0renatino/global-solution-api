@@ -3,12 +3,9 @@ package com.fiap.global_solution_api.controller;
 import com.fiap.global_solution_api.dto.AuthenticationDTO;
 import com.fiap.global_solution_api.dto.LoginResponseDTO;
 import com.fiap.global_solution_api.dto.RegisterDTO;
-import com.fiap.global_solution_api.dto.UsuarioRequestDTO;
-import com.fiap.global_solution_api.infra.security.SecurityConfigurations;
 import com.fiap.global_solution_api.infra.security.TokenService;
 import com.fiap.global_solution_api.model.Usuario;
 import com.fiap.global_solution_api.repository.UsuarioRepository;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@SecurityRequirement(name = SecurityConfigurations.SECURITY)
 public class AuthenticationController {
 
     @Autowired
