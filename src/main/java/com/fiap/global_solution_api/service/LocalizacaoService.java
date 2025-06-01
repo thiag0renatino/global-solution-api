@@ -54,7 +54,8 @@ public class LocalizacaoService {
         localizacaoExist.setDispositivo(dispositivoRepository.findById(dto.getIdDispositivo())
                 .orElseThrow(() -> new ResourceNotFoundException("Dispositivo não encontrado: " + dto.getIdDispositivo())));
 
-        return mapper.toResponseDTO(repository.save(localizacaoExist));
+        Localizacao localizacaoAtt = repository.save(localizacaoExist);
+        return mapper.toResponseDTO(localizacaoAtt);
     }
 
     public void delete(Long id) {

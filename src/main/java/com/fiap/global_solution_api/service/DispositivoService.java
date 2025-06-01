@@ -58,7 +58,8 @@ public class DispositivoService {
         dispositivoExist.setUsuario(usuarioRepository.findById(dto.getIdUsuario())
                 .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado: " + dto.getIdUsuario())));
 
-        return mapper.toResponseDTO(repository.save(dispositivoExist));
+        Dispositivo dispositivoAtt = repository.save(dispositivoExist);
+        return mapper.toResponseDTO(dispositivoAtt);
     }
 
     public void delete(Long id) {

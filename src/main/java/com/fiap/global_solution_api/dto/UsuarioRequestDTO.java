@@ -1,22 +1,24 @@
 package com.fiap.global_solution_api.dto;
 
+import com.fiap.global_solution_api.enuns.TipoUsuario;
+
 public class UsuarioRequestDTO {
 
     private Long idUsuario;
     private String email;
     private String senha;
     private String nome;
-    private String tipo;
+    private TipoUsuario tipo;
 
     public UsuarioRequestDTO() {
     }
 
-    public UsuarioRequestDTO(Long idUsuario, String tipo, String senha, String email, String nome) {
+    public UsuarioRequestDTO(Long idUsuario, String email, String senha, String nome, TipoUsuario tipo) {
         this.idUsuario = idUsuario;
-        this.tipo = tipo;
-        this.senha = senha;
         this.email = email;
+        this.senha = senha;
         this.nome = nome;
+        this.tipo = tipo;
     }
 
     public Long getIdUsuario() {
@@ -51,11 +53,11 @@ public class UsuarioRequestDTO {
         this.nome = nome;
     }
 
-    public String getTipo() {
+    public TipoUsuario getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoUsuario tipo) {
         this.tipo = tipo;
     }
 }
