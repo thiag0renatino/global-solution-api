@@ -2,7 +2,6 @@ package com.fiap.global_solution_api.service;
 
 import com.fiap.global_solution_api.dto.AtualizarNomeRequestDTO;
 import com.fiap.global_solution_api.dto.AtualizarSenhaRequestDTO;
-import com.fiap.global_solution_api.dto.UsuarioRequestDTO;
 import com.fiap.global_solution_api.dto.UsuarioResponseDTO;
 import com.fiap.global_solution_api.mapper.UsuarioMapper;
 import com.fiap.global_solution_api.model.Usuario;

@@ -43,6 +43,12 @@ public class MensagemController {
         return ResponseEntity.ok(service.findByOrigemIdAndSincronizado(idOrigem));
     }
 
+    @PutMapping("/{id}/marcar-sincronizada")
+    public ResponseEntity<Void> marcarMensagemSincronizada(@PathVariable Long id){
+        service.marcarMensagemSincronizada(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     public ResponseEntity<MensagemResponseDTO> insert(@RequestBody @Valid MensagemRequestDTO dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.insert(dto));

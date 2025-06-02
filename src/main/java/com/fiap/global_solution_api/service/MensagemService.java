@@ -48,6 +48,13 @@ public class MensagemService {
                 .toList();
     }
 
+    public void marcarMensagemSincronizada(Long id) {
+        Mensagem mensagem = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Mensagem não encontrada: " + id));
+        mensagem.setSincronizado("S");
+        repository.save(mensagem);
+    }
+
     public MensagemResponseDTO insert(MensagemRequestDTO dto){
         Mensagem mensagem = mapper.toEntity(dto);
         mensagem.setDataEnvio(LocalDate.now());
