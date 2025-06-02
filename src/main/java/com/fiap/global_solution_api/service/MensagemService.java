@@ -41,6 +41,13 @@ public class MensagemService {
                 .orElseThrow(() -> new ResourceNotFoundException("Mensagem não encontrada: " + id));
     }
 
+    public List<MensagemResponseDTO> findByOrigemIdAndSincronizado(Long idOrigem){
+        return repository.findByOrigemIdDispositivoAndSincronizado(idOrigem, "N")
+                .stream()
+                .map(mapper::toResponseDTO)
+                .toList();
+    }
+
     public MensagemResponseDTO insert(MensagemRequestDTO dto){
         Mensagem mensagem = mapper.toEntity(dto);
         mensagem.setDataEnvio(LocalDate.now());

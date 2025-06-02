@@ -38,6 +38,11 @@ public class MensagemController {
         return ResponseEntity.ok(service.findById(id));
     }
 
+    @GetMapping("/offline")
+    public ResponseEntity<List<MensagemResponseDTO>> findByOrigemIdAndSincronizado(@RequestParam Long idOrigem){
+        return ResponseEntity.ok(service.findByOrigemIdAndSincronizado(idOrigem));
+    }
+
     @PostMapping
     public ResponseEntity<MensagemResponseDTO> insert(@RequestBody @Valid MensagemRequestDTO dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.insert(dto));
