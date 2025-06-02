@@ -1,5 +1,7 @@
 package com.fiap.global_solution_api.controller;
 
+import com.fiap.global_solution_api.dto.AtualizarNomeRequestDTO;
+import com.fiap.global_solution_api.dto.AtualizarSenhaRequestDTO;
 import com.fiap.global_solution_api.dto.UsuarioRequestDTO;
 import com.fiap.global_solution_api.dto.UsuarioResponseDTO;
 import com.fiap.global_solution_api.infra.security.SecurityConfigurations;
@@ -30,8 +32,21 @@ public class UsuarioController {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UsuarioResponseDTO> update(@PathVariable Long id, @RequestBody @Valid UsuarioRequestDTO dto) {
-        return ResponseEntity.ok(service.update(id, dto));
+    @GetMapping("/buscar")
+    public ResponseEntity<List<UsuarioResponseDTO>> findByNome(@RequestParam String nome){
+        return ResponseEntity.ok(service.findByNome(nome));
     }
+
+    @PutMapping("/{id}/atualizar-nome")
+    public ResponseEntity<UsuarioResponseDTO> atualizarNome(@PathVariable Long id, @RequestBody @Valid AtualizarNomeRequestDTO dto) {
+        return ResponseEntity.ok(service.atualizarNome(id, dto));
+    }
+
+    @PutMapping("/{id}/atualizar-senha")
+    public ResponseEntity<Void> atualizarSenha(@PathVariable Long id, @RequestBody @Valid AtualizarSenhaRequestDTO dto) {
+        service.atualizarSenha(id, dto);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
