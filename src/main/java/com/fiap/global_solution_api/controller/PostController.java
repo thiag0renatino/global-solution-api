@@ -7,6 +7,8 @@ import com.fiap.global_solution_api.service.PostService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,11 @@ public class PostController {
     @GetMapping
     public ResponseEntity<List<PostResponseDTO>> findAll(){
         return ResponseEntity.ok(service.findAll());
+    }
+
+    @GetMapping("/paginado")
+    public ResponseEntity<Page<PostResponseDTO>> findAllPageable(Pageable pageable){
+        return ResponseEntity.ok(service.findAllPageable(pageable));
     }
 
     @GetMapping("/{id}")

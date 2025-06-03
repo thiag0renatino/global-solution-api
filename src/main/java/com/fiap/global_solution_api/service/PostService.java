@@ -7,6 +7,8 @@ import com.fiap.global_solution_api.model.Post;
 import com.fiap.global_solution_api.repository.PostRepository;
 import com.fiap.global_solution_api.service.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -26,6 +28,11 @@ public class PostService {
                 .stream()
                 .map(mapper::toResponseDTO)
                 .toList();
+    }
+
+    public Page<PostResponseDTO> findAllPageable(Pageable pageable){
+        return repository.findAll(pageable)
+                .map(mapper::toResponseDTO);
     }
 
     public PostResponseDTO findById(Long id){
