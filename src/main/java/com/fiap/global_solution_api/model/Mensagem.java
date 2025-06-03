@@ -2,7 +2,8 @@ package com.fiap.global_solution_api.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Mensagem {
@@ -13,7 +14,7 @@ public class Mensagem {
     @Column(length = 1000)
     private String texto;
 
-    private LocalDate dataEnvio;
+    private LocalDateTime dataEnvio;
 
     private String sincronizado;
 
@@ -28,11 +29,11 @@ public class Mensagem {
     public Mensagem() {
     }
 
-    public Mensagem(Long idMensagem, String texto, String sincronizado, LocalDate dataEnvio, Dispositivo origem, Dispositivo destino) {
+    public Mensagem(Long idMensagem, String texto, LocalDateTime dataEnvio, String sincronizado, Dispositivo origem, Dispositivo destino) {
         this.idMensagem = idMensagem;
         this.texto = texto;
-        this.sincronizado = sincronizado;
         this.dataEnvio = dataEnvio;
+        this.sincronizado = sincronizado;
         this.origem = origem;
         this.destino = destino;
     }
@@ -53,11 +54,11 @@ public class Mensagem {
         this.texto = texto;
     }
 
-    public LocalDate getDataEnvio() {
+    public LocalDateTime getDataEnvio() {
         return dataEnvio;
     }
 
-    public void setDataEnvio(LocalDate dataEnvio) {
+    public void setDataEnvio(LocalDateTime dataEnvio) {
         this.dataEnvio = dataEnvio;
     }
 

@@ -1,12 +1,12 @@
 package com.fiap.global_solution_api.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class MensagemResponseDTO {
 
     private Long idMensagem;
     private String texto;
-    private LocalDate dataEnvio;
+    private LocalDateTime dataEnvio;
     private String sincronizado;
     private DispositivoResponseDTO origem;
     private DispositivoResponseDTO destino;
@@ -14,7 +14,7 @@ public class MensagemResponseDTO {
     public MensagemResponseDTO() {
     }
 
-    public MensagemResponseDTO(Long idMensagem, String texto, LocalDate dataEnvio, String sincronizado, DispositivoResponseDTO origem, DispositivoResponseDTO destino) {
+    public MensagemResponseDTO(Long idMensagem, String texto, LocalDateTime dataEnvio, String sincronizado, DispositivoResponseDTO origem, DispositivoResponseDTO destino) {
         this.idMensagem = idMensagem;
         this.texto = texto;
         this.dataEnvio = dataEnvio;
@@ -39,11 +39,11 @@ public class MensagemResponseDTO {
         this.texto = texto;
     }
 
-    public LocalDate getDataEnvio() {
+    public LocalDateTime getDataEnvio() {
         return dataEnvio;
     }
 
-    public void setDataEnvio(LocalDate dataEnvio) {
+    public void setDataEnvio(LocalDateTime dataEnvio) {
         this.dataEnvio = dataEnvio;
     }
 

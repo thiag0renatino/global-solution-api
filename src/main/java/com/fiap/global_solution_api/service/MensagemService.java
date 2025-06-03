@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -57,7 +57,7 @@ public class MensagemService {
 
     public MensagemResponseDTO insert(MensagemRequestDTO dto){
         Mensagem mensagem = mapper.toEntity(dto);
-        mensagem.setDataEnvio(LocalDate.now());
+        mensagem.setDataEnvio(LocalDateTime.now());
         return mapper.toResponseDTO(repository.save(mensagem));
     }
 
