@@ -4,7 +4,9 @@ import com.fiap.global_solution_api.dto.PostRequestDTO;
 import com.fiap.global_solution_api.dto.PostResponseDTO;
 import com.fiap.global_solution_api.mapper.PostMapper;
 import com.fiap.global_solution_api.model.Post;
+import com.fiap.global_solution_api.model.Usuario;
 import com.fiap.global_solution_api.repository.PostRepository;
+import com.fiap.global_solution_api.repository.UsuarioRepository;
 import com.fiap.global_solution_api.service.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,9 @@ public class PostService {
 
     @Autowired
     private PostRepository repository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private PostMapper mapper;
@@ -44,6 +49,10 @@ public class PostService {
     public PostResponseDTO insert(PostRequestDTO dto){
         Post post = mapper.toEntity(dto);
         post.setDataCriacao(LocalDate.now());
+
+        Usuario usuario = usuarioRepository.findById(dto.getIdUsuario())
+                .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado: " + dto.getIdUsuario()));
+        post.setUsuario(usuario);
         return mapper.toResponseDTO(repository.save(post));
     }
 

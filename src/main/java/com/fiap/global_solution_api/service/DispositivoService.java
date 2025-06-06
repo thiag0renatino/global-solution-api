@@ -4,6 +4,7 @@ import com.fiap.global_solution_api.dto.DispositivoRequestDTO;
 import com.fiap.global_solution_api.dto.DispositivoResponseDTO;
 import com.fiap.global_solution_api.mapper.DispositivoMapper;
 import com.fiap.global_solution_api.model.Dispositivo;
+import com.fiap.global_solution_api.model.Usuario;
 import com.fiap.global_solution_api.repository.DispositivoRepository;
 import com.fiap.global_solution_api.repository.UsuarioRepository;
 import com.fiap.global_solution_api.service.exception.ResourceNotFoundException;
@@ -42,6 +43,11 @@ public class DispositivoService {
             throw new IllegalArgumentException("UUID já cadastrado: " + dto.getUuid());
         }
         Dispositivo dispositivo = mapper.toEntity(dto);
+
+        Usuario usuario = usuarioRepository.findById(dto.getIdUsuario())
+                .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado: " + dto.getIdUsuario()));
+        dispositivo.setUsuario(usuario);
+
         return mapper.toResponseDTO(repository.save(dispositivo));
     }
 

@@ -9,6 +9,8 @@ import java.time.LocalDate;
 public class Localizacao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "localizacao_seq")
+    @SequenceGenerator(name = "localizacao_seq", sequenceName = "SEQ_LOC", allocationSize = 1)
     private Long idLocalizacao;
 
     @Column(precision = 10, scale = 6)

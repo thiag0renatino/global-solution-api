@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public class MensagemRequestDTO {
 
-    private Long idMensagem;
     private String texto;
     private LocalDateTime dataEnvio;
     private String sincronizado;
@@ -14,21 +13,12 @@ public class MensagemRequestDTO {
     public MensagemRequestDTO() {
     }
 
-    public MensagemRequestDTO(Long idMensagem, String texto, LocalDateTime dataEnvio, String sincronizado, Long idOrigem, Long idDestino) {
-        this.idMensagem = idMensagem;
+    public MensagemRequestDTO(String texto, LocalDateTime dataEnvio, String sincronizado, Long idOrigem, Long idDestino) {
         this.texto = texto;
         this.dataEnvio = dataEnvio;
         this.sincronizado = sincronizado;
         this.idOrigem = idOrigem;
         this.idDestino = idDestino;
-    }
-
-    public Long getIdMensagem() {
-        return idMensagem;
-    }
-
-    public void setIdMensagem(Long idMensagem) {
-        this.idMensagem = idMensagem;
     }
 
     public LocalDateTime getDataEnvio() {

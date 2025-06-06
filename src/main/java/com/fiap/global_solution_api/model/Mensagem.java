@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 public class Mensagem {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "msn_seq")
+    @SequenceGenerator(name = "msn_seq", sequenceName = "SEQ_MSN", allocationSize = 1)
     private Long idMensagem;
 
     @Column(length = 1000)

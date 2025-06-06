@@ -2,25 +2,15 @@ package com.fiap.global_solution_api.dto;
 
 public class SolicitacaoVerificacaoRequestDTO {
 
-    private Long idSolicitacao;
     private String documento;
     private String observacao;
 
     public SolicitacaoVerificacaoRequestDTO() {
     }
 
-    public SolicitacaoVerificacaoRequestDTO(Long idSolicitacao, String documento, String observacao) {
-        this.idSolicitacao = idSolicitacao;
+    public SolicitacaoVerificacaoRequestDTO(String documento, String observacao) {
         this.documento = documento;
         this.observacao = observacao;
-    }
-
-    public Long getIdSolicitacao() {
-        return idSolicitacao;
-    }
-
-    public void setIdSolicitacao(Long idSolicitacao) {
-        this.idSolicitacao = idSolicitacao;
     }
 
     public String getDocumento() {

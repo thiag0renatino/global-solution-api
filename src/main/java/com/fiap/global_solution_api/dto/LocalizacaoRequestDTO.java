@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 public class LocalizacaoRequestDTO {
 
-    private Long idLocalizacao;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private LocalDate dataCaptura;
@@ -14,20 +13,11 @@ public class LocalizacaoRequestDTO {
     public LocalizacaoRequestDTO() {
     }
 
-    public LocalizacaoRequestDTO(Long idLocalizacao, BigDecimal latitude, BigDecimal longitude, LocalDate dataCaptura, Long idDispositivo) {
-        this.idLocalizacao = idLocalizacao;
+    public LocalizacaoRequestDTO(BigDecimal latitude, BigDecimal longitude, LocalDate dataCaptura, Long idDispositivo) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.dataCaptura = dataCaptura;
         this.idDispositivo = idDispositivo;
-    }
-
-    public Long getIdLocalizacao() {
-        return idLocalizacao;
-    }
-
-    public void setIdLocalizacao(Long idLocalizacao) {
-        this.idLocalizacao = idLocalizacao;
     }
 
     public BigDecimal getLatitude() {

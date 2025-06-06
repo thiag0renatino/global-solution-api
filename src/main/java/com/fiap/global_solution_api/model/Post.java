@@ -9,6 +9,8 @@ import java.time.LocalDate;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_seq")
+    @SequenceGenerator(name = "post_seq", sequenceName = "SEQ_POST", allocationSize = 1)
     private Long idPost;
 
     @NotBlank

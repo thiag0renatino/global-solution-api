@@ -3,6 +3,7 @@ package com.fiap.global_solution_api.service;
 import com.fiap.global_solution_api.dto.LocalizacaoRequestDTO;
 import com.fiap.global_solution_api.dto.LocalizacaoResponseDTO;
 import com.fiap.global_solution_api.mapper.LocalizacaoMapper;
+import com.fiap.global_solution_api.model.Dispositivo;
 import com.fiap.global_solution_api.model.Localizacao;
 import com.fiap.global_solution_api.repository.DispositivoRepository;
 import com.fiap.global_solution_api.repository.LocalizacaoRepository;
@@ -39,8 +40,11 @@ public class LocalizacaoService {
 
     public LocalizacaoResponseDTO insert(LocalizacaoRequestDTO dto) {
         Localizacao localizacao = mapper.toEntity(dto);
-        localizacao.setDispositivo(dispositivoRepository.findById(dto.getIdDispositivo())
-                .orElseThrow(() -> new ResourceNotFoundException("Dispositivo não encontrado: " + dto.getIdDispositivo())));
+
+        Dispositivo dispositivo = dispositivoRepository.findById(dto.getIdDispositivo())
+                .orElseThrow(() -> new ResourceNotFoundException("Dispositivo não encontrado: " + dto.getIdDispositivo()));
+        localizacao.setDispositivo(dispositivo);
+
         return mapper.toResponseDTO(repository.save(localizacao));
     }
 

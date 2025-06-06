@@ -8,6 +8,8 @@ import java.util.List;
 public class Dispositivo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dispositivo_seq")
+    @SequenceGenerator(name = "dispositivo_seq", sequenceName = "SEQ_DISP", allocationSize = 1)
     private Long idDispositivo;
 
     @Column(unique = true, length = 100)

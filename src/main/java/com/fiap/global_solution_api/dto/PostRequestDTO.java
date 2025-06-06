@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class PostRequestDTO {
 
-    private Long idPost;
     private String titulo;
     private String conteudo;
     private LocalDate dataCriacao;
@@ -14,21 +13,12 @@ public class PostRequestDTO {
     public PostRequestDTO() {
     }
 
-    public PostRequestDTO(Long idPost, String titulo, String conteudo, LocalDate dataCriacao, String sincronizado, Long idUsuario) {
-        this.idPost = idPost;
+    public PostRequestDTO(String titulo, String conteudo, LocalDate dataCriacao, String sincronizado, Long idUsuario) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.dataCriacao = dataCriacao;
         this.sincronizado = sincronizado;
         this.idUsuario = idUsuario;
-    }
-
-    public Long getIdPost() {
-        return idPost;
-    }
-
-    public void setIdPost(Long idPost) {
-        this.idPost = idPost;
     }
 
     public String getTitulo() {

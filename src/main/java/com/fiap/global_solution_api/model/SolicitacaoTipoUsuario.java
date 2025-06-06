@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 public class SolicitacaoTipoUsuario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "solicitacao_sq")
+    @SequenceGenerator(name = "solicitacao_sq", sequenceName = "SEQ_STP", allocationSize = 1)
     private Long idSolicitacao;
 
     @ManyToOne
